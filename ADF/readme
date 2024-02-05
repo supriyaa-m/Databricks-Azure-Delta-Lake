@@ -12,17 +12,17 @@ An Azure Data Factory pipeline is employed for validation.
 A notebook activity within the pipeline picks up the input file from the landing directory.
 The file undergoes validation for specific cases.
 If successful, the validation_status variable is set to "success" and written to an output file. If unsuccessful, the variable is set to "failure."
-Lookup and Variable Setting:
 
+Lookup and Variable Setting:
 A lookup activity retrieves the validation status from the output file.
 The value is stored in a pipeline variable using the setVariable activity.
-Conditional Processing:
 
+Conditional Processing:
 An ifCondition activity evaluates the value of the validation_status variable.
 If the value is "success," the file is moved to the staging directory, and a compressed copy is created before removal from the landing directory.
 If the value is not "success," the input file is copied to the reject directory and removed from the landing directory.
-Data Transformation:
 
+DATA TRANSFORMATION
 Once in the staging directory, the input file undergoes several transformations.
 It is then joined with two other files to generate the required data, which is written as a CSV file to a specific directory.
 
