@@ -1,1 +1,34 @@
+##Project Overview
 
+#Introduction
+This project leverages Azure services to orchestrate a data processing pipeline, providing a robust and scalable solution for handling input files, validating their content, performing transformations, and transferring data through different layers.
+
+#Workflow Overview
+File Ingestion: The first source places an input file into the landing directory within a container under the Azure Storage Account.
+
+#Validation Pipeline:
+
+An Azure Data Factory pipeline is employed for validation.
+A notebook activity within the pipeline picks up the input file from the landing directory.
+The file undergoes validation for specific cases.
+If successful, the validation_status variable is set to "success" and written to an output file. If unsuccessful, the variable is set to "failure."
+Lookup and Variable Setting:
+
+A lookup activity retrieves the validation status from the output file.
+The value is stored in a pipeline variable using the setVariable activity.
+Conditional Processing:
+
+An ifCondition activity evaluates the value of the validation_status variable.
+If the value is "success," the file is moved to the staging directory, and a compressed copy is created before removal from the landing directory.
+If the value is not "success," the input file is copied to the reject directory and removed from the landing directory.
+Data Transformation:
+
+Once in the staging directory, the input file undergoes several transformations.
+It is then joined with two other files to generate the required data, which is written as a CSV file to a specific directory.
+
+#Data Layer Transfer:
+Change data feed is used to transfer data through different layers (bronze to silver, silver to gold).
+Additional transformations are applied at each layer, enhancing the data for reporting or analytical purposes.
+
+#Conclusion
+This project streamlines the end-to-end data processing journey, ensuring the reliability and efficiency of your data pipeline from ingestion to transformation and delivery.
