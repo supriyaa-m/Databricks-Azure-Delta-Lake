@@ -1,12 +1,12 @@
-##Project Overview
+PROJECT OVERVIEW
 
-#Introduction
+INTRODUCTION
 This project leverages Azure services to orchestrate a data processing pipeline, providing a robust and scalable solution for handling input files, validating their content, performing transformations, and transferring data through different layers.
 
-#Workflow Overview
+WORKFLOW OVERVIEW
 File Ingestion: The first source places an input file into the landing directory within a container under the Azure Storage Account.
 
-#Validation Pipeline:
+VALIDATION PIPELINE
 
 An Azure Data Factory pipeline is employed for validation.
 A notebook activity within the pipeline picks up the input file from the landing directory.
@@ -26,9 +26,9 @@ Data Transformation:
 Once in the staging directory, the input file undergoes several transformations.
 It is then joined with two other files to generate the required data, which is written as a CSV file to a specific directory.
 
-#Data Layer Transfer:
+DATA LAYER TRANSFER
 Change data feed is used to transfer data through different layers (bronze to silver, silver to gold).
 Additional transformations are applied at each layer, enhancing the data for reporting or analytical purposes.
 
-#Conclusion
+CONCLUSION
 This project streamlines the end-to-end data processing journey, ensuring the reliability and efficiency of your data pipeline from ingestion to transformation and delivery.
