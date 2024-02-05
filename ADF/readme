@@ -19,7 +19,7 @@ The value is stored in a pipeline variable using the setVariable activity.
 
 Conditional Processing:
 An ifCondition activity evaluates the value of the validation_status variable.
-If the value is "success," the file is moved to the staging directory, and a compressed copy is created before removal from the landing directory.
+If the value is "success," the file is moved to the staging directory, and a compressed copy is created which is stored in archival for housekeeping purpose before removal from the landing directory.
 If the value is not "success," the input file is copied to the reject directory and removed from the landing directory.
 
 DATA TRANSFORMATION
